@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scuba Diving Simulation</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <!---JS Files-->
+    <script src ='js/treasure.js'></script>
+    <script src ='js/fish.js'></script>
+</head>
+<body>
+    <a-scene physics>
+        <!--Importing GLTF Models-->
+        <a-a-assets>
+            <a-asset-item id="island" src="assets/island/scene.gltf"></a-asset-item>
+            <a-asset-item id ='fish' src ='assets/fish/scene.gltf'></a-asset-item>
+            <a-asset-item></a-asset-item>
+        </a-a-assets>
+        <!---Sky-->
+    <a-sky
+        geometry="primitive: sphere;"
+        material="shader: gradient; bottomColor: #00009e; topColor:109 205 227;offset: 0.0001;"
+        radius="100"
+        theta-length="180"
+        side="double"
+        animation="property: rotation; to: 0 300 0; easing:linear; loop: true; dur: 500000"
+        >
+    
+        <!---Loading GLTF Models-->
+        <!--Island-->
+        <a-entity
+        gltf-model="#island"
+        scale="1 1 1"
+        position="0 -15 -40"
+      ></a-entity>
+
+      <!--Fish-->
+      <a-entity position="0 0 0" id="fishModels" fish> </a-entity>
+
+      <!--Treasure-->
+      <a-entity position="0 0 0" id="treasureCoins" coins> </a-entity>
+
+      <!--Coins/Treasure-->
+      <a-entity></a-entity>
+
+    </a-sky>
+        <!---Camera-->
+        <a-entity
+        camera="active: true"
+        look-controls
+        position="0 10 25"
+      ></a-entity>
+
+    </a-scene>
+</body>
+</html>
